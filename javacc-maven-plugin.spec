@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        2.6
-Release:        17.9%{?dist}
+Release:        17.10%{?dist}
 Summary:        JavaCC Maven Plugin
 
 License:        ASL 2.0
@@ -17,16 +17,16 @@ Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildArch: noarch
 
 BuildRequires: %{?scl_prefix_java_common}maven-local
-BuildRequires: maven30-javacc >= 5.0
-BuildRequires: maven30-plexus-utils
-BuildRequires: maven30-maven-doxia-sink-api
-BuildRequires: maven30-maven-doxia-sitetools
-BuildRequires: maven30-maven-invoker-plugin
-BuildRequires: maven30-maven-enforcer-plugin
-BuildRequires: maven30-maven-plugin-plugin
-BuildRequires: maven30-maven-resources-plugin
-BuildRequires: maven30-mojo-parent
-BuildRequires: maven30-plexus-containers-component-javadoc
+BuildRequires: %{?scl_prefix}javacc >= 5.0
+BuildRequires: %{?scl_prefix}plexus-utils
+BuildRequires: %{?scl_prefix}maven-doxia-sink-api
+BuildRequires: %{?scl_prefix}maven-doxia-sitetools
+BuildRequires: %{?scl_prefix}maven-invoker-plugin
+BuildRequires: %{?scl_prefix}maven-enforcer-plugin
+BuildRequires: %{?scl_prefix}maven-plugin-plugin
+BuildRequires: %{?scl_prefix}maven-resources-plugin
+BuildRequires: %{?scl_prefix}mojo-parent
+BuildRequires: %{?scl_prefix}plexus-containers-component-javadoc
 BuildRequires: %{?scl_prefix_java_common}junit
 
 %description
@@ -40,7 +40,7 @@ API documentation for %{pkg_name}.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 
 %pom_remove_dep edu.ucla.cs.compilers:jtb
@@ -50,13 +50,13 @@ cp -p %{SOURCE1} .
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_build
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -70,6 +70,9 @@ set -e -x
 %doc LICENSE-2.0.txt src/main/resources/NOTICE
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 2.6-17.10
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 2.6-17.9
 - maven33 rebuild
 
