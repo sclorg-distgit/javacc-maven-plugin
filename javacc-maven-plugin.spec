@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        2.6
-Release:        17.10%{?dist}
+Release:        17.11%{?dist}
 Summary:        JavaCC Maven Plugin
 
 License:        ASL 2.0
@@ -16,7 +16,7 @@ Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 
 BuildArch: noarch
 
-BuildRequires: %{?scl_prefix_java_common}maven-local
+BuildRequires: %{?scl_prefix}maven-local
 BuildRequires: %{?scl_prefix}javacc >= 5.0
 BuildRequires: %{?scl_prefix}plexus-utils
 BuildRequires: %{?scl_prefix}maven-doxia-sink-api
@@ -70,6 +70,9 @@ set -e -x
 %doc LICENSE-2.0.txt src/main/resources/NOTICE
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 2.6-17.11
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 2.6-17.10
 - maven33 rebuild #2
 
