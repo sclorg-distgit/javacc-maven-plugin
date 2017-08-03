@@ -3,7 +3,7 @@
 
 Name:           %{?scl_prefix}javacc-maven-plugin
 Version:        2.6
-Release:        23.1%{?dist}
+Release:        23.2%{?dist}
 Summary:        JavaCC Maven Plugin
 License:        ASL 2.0
 URL:            http://mojo.codehaus.org/javacc-maven-plugin/ 
@@ -57,6 +57,9 @@ cp -p %{SOURCE1} .
 %doc LICENSE-2.0.txt src/main/resources/NOTICE
 
 %changelog
+* Thu Jun 22 2017 Michael Simacek <msimacek@redhat.com> - 2.6-23.2
+- Mass rebuild 2017-06-22
+
 * Wed Jun 21 2017 Java Maintainers <java-maint@redhat.com> - 2.6-23.1
 - Automated package import and SCL-ization
 
